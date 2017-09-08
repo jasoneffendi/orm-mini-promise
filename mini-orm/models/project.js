@@ -10,8 +10,17 @@ class Project {
     }
   
     static findAll() {
-      let results = models.map(m => new Project(m))
-      return results
+        return new Promise((resolve,reject) => {
+            db.all(`SELECT * FROM Project`, (err,project) => {
+                if(!err) {
+                    let project = project.map(m => new Project(m))
+                    resolve(err);
+                } else {
+                    reject(err);
+                }
+            })
+        })
+
     }
   
     static findById() {}
