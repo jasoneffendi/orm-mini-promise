@@ -3,16 +3,27 @@ const db = new sqlite3.Database('db/database.db');
 
 
 
-class Seupervisor {
+class Supervisor {
     constructor(raw) {
       this.attribute1 = raw.attribute1
       this.attribute2 = raw.attribute2
     }
-  
-    static findAll() {
-      let results = models.map(m => new Supervisor(m))
-      return results
-    }
+    static findAll(){
+        let promise = new Promise((resolve, reject)=> {
+          db.all(`SELECT * FROM Supervisor`, (err, rows)=>{
+            if(!err){
+              resolve(rows)
+            } else {
+              reject(err)
+            }
+          })
+        })
+        return promise;
+      }
+    // static findAll() {
+    //   let results = models.map(m => new Supervisor(m))
+    //   return results
+    // }
   
     static findById() {}
   
@@ -25,3 +36,5 @@ class Seupervisor {
     static destroy() {}
   
   }
+
+  module.exports = Supervisor

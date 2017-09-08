@@ -1,21 +1,20 @@
 let express = require('express');
 let router = express.Router();
-let supevisor = require('../models/supervisor')
+let view = require('../models/view')
 
 
 router.get('/', (req,res) => {
-    supevisor.findAll()
-    .then(supervisor => {
-        res.render('supevisor' , {data : supevisor, title : 'Halaman supevisor'})
-    })
-        
-
+    res.render('view' ,{data : view, title : 'Halaman'})
+    // project.findAll(()=> {
+       
+    //     // res.render('project' , {data : project, title : 'Halaman Project'})
+    // })
 })
 // router.get('/', (req, res)=>{
-//     supevisor.findAll(() => {
+//     project.findAll(() => {
 //     Model_supervisor.getAll()
 //         .then(supervisor => {
-//             res.render('supevisor', {data: supervisor }) 
+//             res.render('project', {data: supervisor }) 
 //         })
 //         .catch(err => {
 //         console.log(err);

@@ -22,4 +22,9 @@ db.serialize(() => {
     VALUES("spooky", "planning")`, () => {
         console.log("populate berhasil")
     })
+
+    db.run(`INSERT INTO Supervisor(name, email) 
+    VALUES("halo", "halo@mail.com")`, () => {
+        console.log("populate berhasil")
+    })
 })

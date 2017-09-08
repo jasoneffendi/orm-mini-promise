@@ -1,11 +1,12 @@
 let express = require('express');
 let router = express.Router();
-let project = require('../models/project.js')
+let project = require('../models/project')
 
 
 router.get('/', (req,res) => {
     project.findAll(()=> {
-        res.render('project' , {data : project, title : 'Halaman Project'})
+        res.send(project)
+        // res.render('project' , {data : project, title : 'Halaman Project'})
     })
 })
 // router.get('/', (req, res)=>{

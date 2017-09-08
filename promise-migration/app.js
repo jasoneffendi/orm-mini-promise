@@ -6,16 +6,17 @@ const bodyParser = require('body-parser');
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
-let project = require('./router/project.js')
-let supervisor = require('./router/supervisor.js')
+let view = require('./router/view.js')
+// let supervisor = require('./router/supervisor.js')
 
 
 app.get('/', (req, res)=>{
 res.render('index')
+// res.send(siswa)
 })
 
-app.use('/project', project);
-app.use('/supervisor', supervisor)
+app.use('/view', view);
+// // app.use('/supervisor', supervisor)
 
 
 app.listen(3000, () => {
